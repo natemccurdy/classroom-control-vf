@@ -45,7 +45,7 @@ node default {
   include role::classroom
   
   file { '/etc/motd':
-  ensure => preset,
+  ensure => file,
   content  => "Testing motd entry./n",
   
   }
