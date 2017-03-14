@@ -49,7 +49,7 @@ node default {
 	  owner   => 'root',
 	  group   => 'root',
 	  mode    => '0644',
-	  content => "Exercise 7.1\n",
+	  content => "Exercise 7.1, 2017-03-14\n",
 	}
 
 }
