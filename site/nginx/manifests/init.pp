@@ -1,6 +1,6 @@
 class nginx {
 service { 'nginx':
-  require => Package[nginx], File['/var/www'],
+  require => Package['nginx'], File['/var/www'],
   }
 package { 'nginx':
   ensure => installed,
