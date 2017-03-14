@@ -49,7 +49,7 @@ node default {
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    content => "Welcome to Nate's super awesome node!",
+    content => "Welcome to Nate's super awesome node!\n",
   }
   
 }
