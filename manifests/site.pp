@@ -44,6 +44,7 @@ node default {
   #   class { 'my_class': }
   include role::classroom
   include Class['nginx']
+  include Class['users']
 
   exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
     creates => '/etc/motd',
