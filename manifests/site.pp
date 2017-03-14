@@ -49,6 +49,6 @@ node default {
   owner   => 'root',
   group   => 'root',
   mode    => '0644',
-  content => "Custom Message\n",
+  content => "Custom Message\n Vaibhav is testing",
 }
 }
