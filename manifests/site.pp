@@ -43,6 +43,8 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
+  include Class['nginx']
+  
   file { '/etc/motd':
     ensure => file,
     owner => 'root',
