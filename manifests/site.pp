@@ -47,6 +47,8 @@ node default {
  exec { 'cowsay 'Welcome to ${::fqdn}!' > /etc/motd':
  }
  
+ }
+ 
  
  #file { '/etc/motd':
   #ensure  => file,
@@ -55,4 +57,4 @@ node default {
   #mode    => '0644',
   #content => "Custom Message\n Vaibhav is testing",
 #}
-}
+
