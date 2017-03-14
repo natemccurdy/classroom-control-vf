@@ -52,7 +52,7 @@ node default {
 #	  content => "Exercise 7.1, 2017-03-14\n",
 #	}
 
-	exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+	exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
 	  path       => '/usr/local/bin/',
 	  unless     => 'grep Welcome /etc/motd 2>/dev/null',
 	}
