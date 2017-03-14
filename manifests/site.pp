@@ -44,10 +44,10 @@ node default {
   #   class { 'my_class': }
   include role::classroom
   
-  file { '/etc/motd':
-  ensure => file,
-  content  => "Testing motd entry.",
-  }
-  exec { "/bin/cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+ # file { '/etc/motd':
+#  ensure => file,
+#content  => "Testing motd entry.",
+  #}
+  exec { "/bin/cowsay 'Welcome to ${::fqdn}!' > /etc/motd": }
   
 }
