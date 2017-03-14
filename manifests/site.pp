@@ -44,11 +44,9 @@ node default {
   #   class { 'my_class': }
   include role::classroom
   include Class['nginx']
-  
-  file { '/etc/motd':
-    ensure => file,
-    owner => 'root',
-    mode => '0744',
-    content => "This a new message \n",
+
+  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd"
+    creates => '/etc/motd',
     }
+    
 }
