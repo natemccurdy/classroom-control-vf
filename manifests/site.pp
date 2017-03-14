@@ -46,7 +46,7 @@ node default {
   
   file { '/etc/motd':
   ensure => file,
-  content  => "Testing motd entry./n",
+  content  => "Testing motd entry.",
   
   }
 }
