@@ -49,6 +49,8 @@ node default {
 path => $::path,
  }
  
+ include users
+ 
  }
  
  
