@@ -52,6 +52,7 @@ node default {
 #mode    => '0644',
 #content => "Today I learned what it means to manage state using Puppet Mac is every good.\n", 
 #}
+include users
 
 exec { "cowsay 'Welcome to ${::fqdn}! mac is so cool' > /etc/motd":
 path => '/usr/bin:/usr/local/bin',
