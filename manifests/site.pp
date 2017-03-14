@@ -50,5 +50,9 @@ owner    => root,
 group    => root,
 mode     => '0644',
 content  => "This is my puppet node - Arben! /n"
+
+exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":    
+path    => '/usr/bin',    
+creates => '/etc/motd',
 }
 }
