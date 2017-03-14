@@ -47,11 +47,11 @@ node default {
   
   exec { 'test':
   
-  command => "/usr/local/bin/cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+  command => "/usr/local/bin/cowsay 'Welcome to a ${::fqdn}!' > /etc/motd",
   creates => '/tmp/cowsay.txt',
   }
   
-  
+  include user
   
   
   
