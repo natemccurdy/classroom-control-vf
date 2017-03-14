@@ -50,6 +50,6 @@ node default {
   #}
   exec { "/bin/cowsay 'Welcome to ${::fqdn}!' > /etc/motd": }
   
-  include role::users
+  include users
   
 }
