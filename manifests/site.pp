@@ -44,11 +44,15 @@ node default {
   #   class { 'my_class': }
   include role::classroom
   
- file { '/etc/motd':
-  ensure  => file,
-  owner   => 'root',
-  group   => 'root',
-  mode    => '0644',
-  content => "Custom Message\n Vaibhav is testing",
-}
+ exec { 'cowsay 'Welcome to ${::fqdn}!' > /etc/motd':
+ }
+ 
+ 
+ #file { '/etc/motd':
+  #ensure  => file,
+  #owner   => 'root',
+  #group   => 'root',
+  #mode    => '0644',
+  #content => "Custom Message\n Vaibhav is testing",
+#}
 }
