@@ -1,7 +1,11 @@
+class nginx {
+service { 'nginx':
+  require => Package[nginx], File['/var/www'],
+  }
 package { 'nginx':
   ensure => installed,
-  require => File['/var/www'],
   }
 file { '/var/www' :
   ensure => directory,
   }
+ }
