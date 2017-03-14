@@ -46,7 +46,7 @@ node default {
   
   exec { 'test':
   
-  command => "/usr/local/bin/cowsay 'Welcome to a ${::fqdn}!' > /etc/motd",
+  command => "/bin/cowsay 'Welcome to a ${::fqdn}!' > /etc/motd",
   creates => '/tmp/cowsay.txt',
   }
 }
