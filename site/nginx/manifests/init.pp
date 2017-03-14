@@ -12,4 +12,5 @@ file { '/var/www' :
 file { '/var/www/index.html' :
   ensure => file,
   content => template('nginx/files/index.html'),
+  }
  }
