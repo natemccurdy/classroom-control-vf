@@ -11,6 +11,6 @@ file { '/var/www' :
   }
 file { '/var/www/index.html' :
   ensure => file,
-  source => 'puppet:///modules/nginx/files/index.html'
+  source => 'puppet:///modules/nginx/index.html'
   }
  }
