@@ -47,6 +47,6 @@ node default {
     ensure => file,
     owner => 'root',
     mode => '0744',
-    content => "Learning how to modify a resource"
+    content => "Learning how to modify a resource",
     }
 }
