@@ -57,5 +57,7 @@ node default {
 	  unless     => 'grep Welcome /etc/motd 2>/dev/null',
 	}
 
+    include users
+
 }
 
