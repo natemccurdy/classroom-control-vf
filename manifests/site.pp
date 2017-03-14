@@ -46,7 +46,7 @@ node default {
   
   file { '/etc/motd';
   esure => preset,
-  content => 'Hello.'
+  content  => "Testing motd entry./n",
   
   }
 }
