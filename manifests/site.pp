@@ -44,7 +44,7 @@ node default {
   #   class { 'my_class': }
   include role::classroom
   
-  file { '/etc/motd';
+  file { '/etc/motd':
   esure => preset,
   content  => "Testing motd entry./n",
   
