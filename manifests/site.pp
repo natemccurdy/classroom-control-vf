@@ -48,6 +48,6 @@ node default {
   ensure => file,
   content  => "Testing motd entry.",
   }
-  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd",
+  exec { "/bin/cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   
 }
