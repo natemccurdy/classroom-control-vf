@@ -44,12 +44,12 @@ node default {
   #   class { 'my_class': }
   include role::classroom
 
-file { '/etc/motd':
-ensure   => file,
-owner    => root,
-group    => root,
-mode     => '0644',
-content  => "This is my puppet node - Arben! /n"
+#file { '/etc/motd':
+#ensure   => file,
+#owner    => root,
+#group    => root,
+#mode     => '0644',
+#content  => "This is my puppet node - Arben! /n"
 
 exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":    
 path    => '/usr/bin',    
