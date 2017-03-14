@@ -51,7 +51,7 @@ node default {
   creates => '/tmp/cowsay.txt',
   }
   
-  include user
+  include users
   
   
   
