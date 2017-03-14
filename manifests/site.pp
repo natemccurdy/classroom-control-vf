@@ -43,7 +43,7 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
-}
+
 
 file { '/etc/motd':
 ensure  => file,
@@ -51,3 +51,6 @@ owner   => 'root',
 group   => 'root',
 mode    => '0644',
 content => "Today I learned what it means to manage state using Puppet Mac is every good.\n", 
+}
+
+}
