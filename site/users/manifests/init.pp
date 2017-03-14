@@ -1,3 +1,5 @@
+class users {
+
 user { 'fundamentals':
   ensure => present,
   gid              => '10',
@@ -8,3 +10,5 @@ user { 'fundamentals':
   shell            => '/bin/bash',
   uid              => '1002',
  }
+
+}
