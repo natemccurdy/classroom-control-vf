@@ -47,6 +47,6 @@ node default {
     ensure => file,
     owner => 'root',
     mode => '0744',
-    content => "This a new message /n",
+    content => "This a new message \n",
     }
 }
