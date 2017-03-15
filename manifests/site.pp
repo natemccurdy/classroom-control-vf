@@ -63,7 +63,7 @@ node default {
     include nginx
 
     if $is_virtual {
-        $vmtype = capitalise($facts['virtual'])
+        $vmtype = capitalize($facts['virtual'])
         notify { "This is a ${vmtype} machine": }
     }
 
