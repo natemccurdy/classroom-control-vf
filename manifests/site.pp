@@ -53,7 +53,7 @@ node default {
 #content => "Today I learned what it means to manage state using Puppet Mac is every good.\n", 
 #}
 include users
-
+include skeleton
 exec { "cowsay 'Welcome to ${::fqdn}! mac is so cool' > /etc/motd":
 path => '/usr/bin:/usr/local/bin',
 creates => '/etc/motd',
