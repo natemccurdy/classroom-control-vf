@@ -48,8 +48,14 @@ node default {
   include nginx
   include memcached
   
-  if $is_virtual {
-    notify { "This is a ${facts['virtual']} virtual machine": }
+  if $facts['is_virtual'] {
+    
+    $message = $facts['virtual'] ? {
+     'docker' => "This is a ${capitalize($facts['virtual'])} container",
+     default  => "This is a ${capitalize($facts['virtual'])} virtual machine",
+    }
+    
+    notify { $message: }
   }
 
 }
