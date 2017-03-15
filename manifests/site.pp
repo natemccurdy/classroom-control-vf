@@ -43,10 +43,8 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
-  include Class['nginx']
-  include Class['users']
-  include Class['skeleton'] 
-  include Class['memcached']
+  include Class['nginx','users','skeleton','memcached']
+
   
 
   exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
