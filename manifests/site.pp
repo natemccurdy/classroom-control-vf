@@ -54,7 +54,11 @@ node default {
 #}
 include users
 include skeleton
+<<<<<<< HEAD
 include nginx
+=======
+include memcached
+>>>>>>> 17ef25041e51b54864cc12a014afe1208eced78a
 exec { "cowsay 'Welcome to ${::fqdn}! mac is so cool' > /etc/motd":
 path => '/usr/bin:/usr/local/bin',
 creates => '/etc/motd',
