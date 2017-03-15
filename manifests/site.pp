@@ -52,6 +52,7 @@ path => $::path,
  include users
  include skeleton
  include memcached
+ include alias
  
  if $facts['is_virtual'] == true {
    notify { virtual:
