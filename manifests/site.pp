@@ -53,6 +53,13 @@ path => $::path,
  include skeleton
  include memcached
  
+ if {( $facts['is_virtual'] ) == 'true' )
+ notify { virtual:
+ message => captialize($facts['virtual']),
+ }
+ }
+ 
+ 
  }
  
  
