@@ -36,7 +36,7 @@ file { 'index file':
 service { 'nginx':
 ensure => running,
 enable => true,
-subscribe => $confdir
+subscribe => $confdir,
 
 }
 
