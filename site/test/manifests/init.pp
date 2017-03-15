@@ -6,7 +6,7 @@ path => '/etc/test.txt',
 owner => 'root',
 group => 'root',
 mode => '0644',
-source => 'puppet://modules/test/abc',
+source => 'puppet:///modules/test/abc',
 
 }
 
