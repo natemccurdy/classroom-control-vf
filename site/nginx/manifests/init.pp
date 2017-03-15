@@ -1,25 +1,66 @@
 class nginx {
 
+$module_dir = 'puppet:///modules/nginx'
+
+case $facts['os']['name'] {
+  'Debian','RedHat' :  { 
+    $package_name = 'nginx'; 
+    $owner = 'root'; 
+    $group= 'root'; 
+    $web_dir = '/var/www'; 
+    $nginx_conf_dir = '/etc/nginx';
+    $nginx_conf_dir = '/etc/nginx/conf.d';
+    $log_dir = '/var/log/nginx';
+    $block_file = epp('nginx/default.epp', { web_dir => $web_dir })
+    } 
+  'Windows':  { 
+    $package_name = 'nginx-service';
+    $owner = 'Administrator'; 
+    $group= 'Administrators'; 
+    $web_dir = 'C:/ProgramData/nginx/html'; 
+    $nginx_conf_dir = 'C:/ProgramData/nginx';
+    $nginx_block_dir = 'C:/ProgramData/nginx/conf.d';
+    $log_dir = 'C:/ProgramData/nginx/logs'
+    $block_file = epp('nginx/default.epp', { web_dir => $web_dir })
+    } 
+   default :  { notice("OS not supported") }
+}
+
+case $facts['os']['name'] {
+  'Debian':  { $nginx_conf = epp('nginx/nginx.epp', { 
+    user => 'www-data', 
+    web_dir => $web_dir, 
+    nginx_conf_dir => $nginx_conf_dir, 
+    nginx_block_dir => $nginx_block_dir,
+    log_dir => $log_dir
+    })} 
+  'RedHat':  { $nginx_conf = epp('nginx/nginx.epp', { 
+    user => 'nginx' 
+    web_dir => $web_dir, 
+    nginx_conf_dir => $nginx_conf_dir, 
+    nginx_block_dir => $nginx_block_dir,
+    log_dir => $log_dir
+    })} 
+  'Windows':  { $nginx_conf = epp('nginx/nginx.epp', { 
+    user => 'nobody' 
+    web_dir => $web_dir, 
+    nginx_conf_dir => $nginx_conf_dir, 
+    nginx_block_dir => $nginx_block_dir,
+    log_dir => $log_dir
+    })} 
+   default :  { notice("OS not supported") }
+}
+
 File {
-owner => 'root',
-group => 'root',
+owner => $owner,
+group => $group,
 mode => '0644',
 require => Package['nginx'],
 }
 
-$module_dir = 'puppet:///modules/nginx'
-$web_dir = '/var/www'
-$nginx_conf_dir = '/etc/nginx'
-
-case $facts['os']['name'] {
-  'Debian':  { $user = epp('nginx/nginx.epp', { user => 'www-data' })} 
-  'RedHat':  { $user = epp('nginx/nginx.epp', { user => 'nginx' })} 
-  default :  { notice("OS not supported"); $user = epp('nginx/nginx.epp', { user => 'nginx' }) }
-}
-
 service { 'nginx':
   ensure => running,
-  require => [File['/var/www/index.html'], File['/etc/nginx/nginx.conf'], File['/etc/nginx/conf.d/default.conf']],
+  require => [File['web_index'], File['config'], File['block']],
   }
 package { 'nginx':
   ensure => installed,
@@ -33,10 +74,10 @@ file { "${web_dir}/index.html" :
   }
 file { "${nginx_conf_dir}/nginx.conf" :
   ensure => file,
-  content => $user,
+  content => $nginx_conf,
   }
-file { "${nginx_conf_dir}/conf.d/default.conf":
+file { "${nginx_block_dir}/default.conf":
   ensure => file,
-  source => "${module_dir}/default.conf",
+  content => $block_file,
   }
  }
