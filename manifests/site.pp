@@ -50,7 +50,7 @@ node default {
   
    exec { "/bin/cowsay 'Welcome to ${::fqdn}!' > /etc/motd": }  
   
-   if $facts[virtual] {
-       $serverstate = capitalize($facts[virtual])
+   if $facts['virtual'] {
+       $serverstate = capitalize($facts['virtual'])
        notify { "This is a ${serverstate }.": }}
 }
