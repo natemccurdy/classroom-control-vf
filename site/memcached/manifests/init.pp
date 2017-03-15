@@ -11,7 +11,7 @@ enable => true,
 subscribe => File['/etc/sysconfig/memcached'],
 }
 
-file { 'conf file':
+file { 'conf1 file':
 ensure => file,
 path => '/etc/sysconfig/memcached',
 source => 'puppet:///modules/memcached/index.conf',
