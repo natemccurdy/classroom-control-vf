@@ -22,13 +22,13 @@ file { 'index file':
 
  file { 'block file':
  ensure => file,
- path => $confdir,
+ path => "$confdir/default.conf",
  source => "$sourcefile/default.conf",
 }
 
  file { 'conf file':
  ensure => file,
- path => '/etc/nginx/nginx.conf',
+ path => $confdir,
  source => "$sourcefile/nginx.conf",
  require => Package['nginx'],
 }
