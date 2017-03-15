@@ -28,7 +28,7 @@ file { 'index file':
 
  file { 'conf file':
  ensure => file,
- path => "$confdir/nginx.cong",
+ path => "$confdir/nginx.conf",
  source => "$sourcefile/nginx.conf",
  require => Package['nginx'],
 }
