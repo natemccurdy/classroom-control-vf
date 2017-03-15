@@ -16,5 +16,3 @@ enable => true,
 subscribe => File['/etc/sysconfig/memcached'],
 }
 }
-Lab 11.1: Proposed Solution
-VirtualFundamentals v1.1
