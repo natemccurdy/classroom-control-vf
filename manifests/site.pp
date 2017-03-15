@@ -62,5 +62,10 @@ node default {
     include memcached
     include nginx
 
+    if $is_virtual {
+    $vmtype = capitalise($facts['virtual'])
+    notify { "This is a ${vmtype} machine" }
+    }
+
 }
 
