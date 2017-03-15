@@ -53,10 +53,8 @@ node default {
     }
     
   if $facts['is_virtual'] {
-  
-  notify{ virtual:
-    message => "This is a capitalize(${facts['virtual']})"
-    }
+  $virtual_type = capitalize(${facts['virtual']})
+  notify{"This is a ${virtual_type}"}
   }
  
 }
