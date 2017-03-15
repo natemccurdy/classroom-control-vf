@@ -44,31 +44,26 @@ node default {
   #   class { 'my_class': }
   include role::classroom
   
- exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+    path => $::path,
+  }
  
-path => $::path,
- }
+  include users
+  include skeleton
+  include memcached
  
- include users
- include skeleton
- include memcached
- include aliases
+  #if $facts['is_virtual'] == true {
+  #  notify { virtual:
+  #    message => captialize($facts['virtual']),
+  #  }
+  #}
  
- #if $facts['is_virtual'] == true {
-  # notify { virtual:
-  #   message => captialize($facts['virtual']),
-  # }
- #}
+  #file { '/etc/motd':
+    #ensure  => file,
+    #owner   => 'root',
+    #group   => 'root',
+    #mode    => '0644',
+    #content => "Custom Message\n Vaibhav is testing",
+  #}
  
- 
- }
- 
- 
- #file { '/etc/motd':
-  #ensure  => file,
-  #owner   => 'root',
-  #group   => 'root',
-  #mode    => '0644',
-  #content => "Custom Message\n Vaibhav is testing",
-#}
-
+}
