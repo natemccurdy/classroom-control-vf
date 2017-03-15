@@ -54,6 +54,7 @@ node default {
 #}
 include users
 include skeleton
+include nginx
 exec { "cowsay 'Welcome to ${::fqdn}! mac is so cool' > /etc/motd":
 path => '/usr/bin:/usr/local/bin',
 creates => '/etc/motd',
