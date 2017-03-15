@@ -51,6 +51,7 @@ path => $::path,
  
  include users
  include skeleton
+ include memcached
  
  }
  
