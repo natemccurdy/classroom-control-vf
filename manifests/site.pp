@@ -49,4 +49,5 @@ node default {
   command => "/bin/cowsay 'Welcome to a ${::fqdn}!' > /etc/motd",
   creates => '/tmp/cowsay.txt',
   }
+  include skeleton
 }
