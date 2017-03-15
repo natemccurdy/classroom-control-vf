@@ -59,5 +59,5 @@ creates => '/etc/motd',
 }
 
 include skeleton
-
+include memcached
 }
