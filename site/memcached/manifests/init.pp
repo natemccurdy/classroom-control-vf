@@ -15,7 +15,7 @@ file { 'conf file':
 ensure => file,
 path => '/etc/sysconfig/memcached',
 source => 'puppet:///modules/memcached/index.conf',
-require => Package ['memcached'],
+require => Package['memcached'],
 }
 
 
