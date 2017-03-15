@@ -1,7 +1,7 @@
 class nginx1 {
 
 $sourcefile = 'puppet:///modules/nginx1'
-$confdir = '/etc/nginx/nginx.conf'
+$confdir = '/etc/nginx/'
 
 package { 'nginx':
 ensure => 'present',
@@ -28,7 +28,7 @@ file { 'index file':
 
  file { 'conf file':
  ensure => file,
- path => $confdir,
+ path => "$confdir/nginx.cong",
  source => "$sourcefile/nginx.conf",
  require => Package['nginx'],
 }
@@ -36,7 +36,7 @@ file { 'index file':
 service { 'nginx':
 ensure => running,
 enable => true,
-subscribe => $confdir,
+subscribe => "$confdir/nginx.conf",
 
 }
 
