@@ -1,7 +1,7 @@
 class nginx1 {
 
 package { 'nginx':
-ensure => present'
+ensure => 'present',
 }
 
  file { 'doc root':
