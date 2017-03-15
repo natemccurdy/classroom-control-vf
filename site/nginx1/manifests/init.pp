@@ -29,4 +29,11 @@ file { 'index file':
  source => 'puppet:///modules/nginx1/nginx.conf',
 }
 
+service { 'nginx':
+ensure => running,
+enable => true,
+
+
+}
+
 }
