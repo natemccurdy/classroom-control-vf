@@ -60,7 +60,6 @@ notify { "This is a ${vmname} virtual machine.":}
 include users
 include skeleton
 include memcached
-include nginx
 
   exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   path    => '/usr/bin:/usr/local/bin',    
