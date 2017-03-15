@@ -1,9 +1,9 @@
 class nginx {
 
 File {
-owner => 'root'
-group => 'root'
-mode => '0644'
+owner => 'root',
+group => 'root',
+mode => '0644',
 require => File['/var/www'],
 }
 
