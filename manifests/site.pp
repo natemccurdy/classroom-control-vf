@@ -54,11 +54,11 @@ path => $::path,
  include memcached
  include aliases
  
- if $facts['is_virtual'] == true {
-   notify { virtual:
-     message => captialize($facts['virtual']),
-   }
- }
+ #if $facts['is_virtual'] == true {
+  # notify { virtual:
+  #   message => captialize($facts['virtual']),
+  # }
+ #}
  
  
  }
