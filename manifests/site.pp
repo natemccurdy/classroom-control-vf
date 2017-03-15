@@ -62,8 +62,7 @@ include skeleton
 include memcached
 include nginx
 
-  exec 
-  { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   path    => '/usr/bin:/usr/local/bin',    
   creates => '/etc/motd', 
   }
