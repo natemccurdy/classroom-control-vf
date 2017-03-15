@@ -3,7 +3,7 @@ class nginx {
   $sp = 'nginx'
   $docr = '/var/www'
   $cdir = "/etc/${sp}"
-  $conf_d = "${cdor}/conf.d"
+  $conf_d = "${cdir}/conf.d"
 
   Files {
     owner => 'root',
