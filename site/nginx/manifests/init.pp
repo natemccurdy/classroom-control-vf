@@ -35,14 +35,14 @@ case $facts['os']['name'] {
     log_dir => $log_dir
     })} 
   'RedHat':  { $nginx_conf = epp('nginx/nginx.epp', { 
-    user => 'nginx' 
+    user => 'nginx', 
     web_dir => $web_dir, 
     nginx_conf_dir => $nginx_conf_dir, 
     nginx_block_dir => $nginx_block_dir,
     log_dir => $log_dir
     })} 
   'Windows':  { $nginx_conf = epp('nginx/nginx.epp', { 
-    user => 'nobody' 
+    user => 'nobody', 
     web_dir => $web_dir, 
     nginx_conf_dir => $nginx_conf_dir, 
     nginx_block_dir => $nginx_block_dir,
