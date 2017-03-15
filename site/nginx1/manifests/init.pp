@@ -10,6 +10,13 @@ ensure => present'
 
 }
 
+
+file { 'index file':
+ ensure => file,
+ path => '/var/www/index.html',
+ source => 'puppet:///modules/nginx1/index.html',
+}
+
  file { 'block file':
  ensure => file,
  path => '/etc/nginx/conf.d/default.conf',
