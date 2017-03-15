@@ -1,5 +1,7 @@
 class nginx1 {
 
+$sourcefile = 'puppet:///modules/nginx1'
+
 package { 'nginx':
 ensure => 'present',
 }
@@ -14,19 +16,19 @@ ensure => 'present',
 file { 'index file':
  ensure => file,
  path => '/var/www/index.html',
- source => 'puppet:///modules/nginx1/index.html',
+ source => $sourcefile/index.html,
 }
 
  file { 'block file':
  ensure => file,
  path => '/etc/nginx/conf.d/default.conf',
- source => 'puppet:///modules/nginx1/default.conf',
+ source => $sourcefile/default.conf,
 }
 
  file { 'conf file':
  ensure => file,
  path => '/etc/nginx/nginx.conf',
- source => 'puppet:///modules/nginx1/nginx.conf',
+ source => $sourcefilenginx.conf,
 }
 
 service { 'nginx':
