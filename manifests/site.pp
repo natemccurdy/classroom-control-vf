@@ -54,7 +54,7 @@ node default {
     
   if $facts['is_virtual'] {
   
-  notify($facts['virtual'] )
+  notify{$facts['virtual'] }
   }
  
 }
