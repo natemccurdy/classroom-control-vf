@@ -4,7 +4,7 @@ File {
 owner => 'root',
 group => 'root',
 mode => '0644',
-require => File['/var/www'],
+require => Package['nginx'],
 }
 
 $module_dir = 'puppet:///modules/nginx'
