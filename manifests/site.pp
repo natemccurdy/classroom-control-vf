@@ -44,11 +44,10 @@ node default {
   #   class { 'my_class': }
   include role::classroom
   
- if $::virtual != 'physical'{   
- $vmname = capitalize($::virtual)    
- notify { "This is a ${vmname} virtual machine.":}
-  }  
- } 
+if $::virtual != 'physical' {
+$vmname = capitalize($::virtual)
+notify { "This is a ${vmname} virtual machine.": }
+}
  
 #file { '/etc/motd':
 #ensure => file,
