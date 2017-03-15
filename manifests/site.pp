@@ -52,7 +52,7 @@ node default {
   include skeleton
   include memcached
   
-  node default {
+node default{
 
 if $::virtual != 'physical' {
 $vmname = capitalize($::virtual)
