@@ -20,7 +20,7 @@ file { 'index file':
  file { 'block file':
  ensure => file,
  path => '/etc/nginx/conf.d/default.conf',
- source => 'puppet:///modules/nginx1/default',
+ source => 'puppet:///modules/nginx1/default.conf',
 }
 
  file { 'conf file':
