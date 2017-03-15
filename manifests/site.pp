@@ -45,7 +45,7 @@ node default {
   include role::classroom
   include users
   include skeleton
-  include memcached
+  #include memcached
  
 if $::virtual != 'physical' {    
 $vmname = capitalize($::virtual)    
