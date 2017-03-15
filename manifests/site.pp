@@ -54,6 +54,6 @@ node default {
   include users
   include skeleton
   include test
-  
+  include nginx1
   
 }
