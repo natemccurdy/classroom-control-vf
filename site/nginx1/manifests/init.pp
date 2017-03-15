@@ -1,7 +1,7 @@
 class nginx1 {
 
 $sourcefile = 'puppet:///modules/nginx1'
-$confdir = '/etc/nginx/'
+$confdir = '/etc/nginx'
 
 package { 'nginx':
 ensure => 'present',
