@@ -43,7 +43,7 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
-  include Class['nginx','users','skeleton','memcached']
+  include Class['nginx','users','skeleton','memcached','aliases']
 
   
 
