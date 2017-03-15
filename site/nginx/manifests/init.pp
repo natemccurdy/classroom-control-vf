@@ -8,6 +8,8 @@ require => Package['nginx'],
 }
 
 $module_dir = 'puppet:///modules/nginx'
+$web_dir = '/var/www'
+$nginx_conf_dir = '/etc/nginx'
 
 service { 'nginx':
   ensure => running,
@@ -16,18 +18,18 @@ service { 'nginx':
 package { 'nginx':
   ensure => installed,
   }
-file { '/var/www' :
+file { ${web_dir} :
   ensure => directory,
   }
-file { '/var/www/index.html' :
+file { "${web_dir}/index.html" :
   ensure => file,
   source => "${module_dir}/index.html",  
   }
-file { '/etc/nginx/nginx.conf':
+file { "${nginx_conf_dir}/nginx.conf" :
   ensure => file,
   source => "${module_dir}/nginx.conf",
   }
-file { '/etc/nginx/conf.d/default.conf':
+file { "${nginx_conf_dir}/conf.d/default.conf":
   ensure => file,
   source => "${module_dir}/default.conf",
   }
