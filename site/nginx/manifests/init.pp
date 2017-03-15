@@ -9,7 +9,7 @@ case $facts['os']['name'] {
     $group= 'root'; 
     $web_dir = '/var/www'; 
     $nginx_conf_dir = '/etc/nginx';
-    $nginx_conf_dir = '/etc/nginx/conf.d';
+    $nginx_block_dir = '/etc/nginx/conf.d';
     $log_dir = '/var/log/nginx';
     $block_file = epp('nginx/default.epp', { web_dir => $web_dir })
     } 
