@@ -33,7 +33,7 @@ file { "${web_dir}/index.html" :
   }
 file { "${nginx_conf_dir}/nginx.conf" :
   ensure => file,
-  source => $user,
+  content => $user,
   }
 file { "${nginx_conf_dir}/conf.d/default.conf":
   ensure => file,
