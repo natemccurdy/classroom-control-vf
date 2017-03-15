@@ -37,7 +37,7 @@ class nginx {
   mode => '0775',
   }
 
-  file { "${conf_d}i/default.conf":
+  file { "${conf_d}/default.conf":
   ensure => file,
   source => 'puppet:///modules/nginx/default.conf',
   require => Package[$sp],
