@@ -1,48 +1,51 @@
 class nginx {
+  
+  $sp = 'nginx'
+  $docr = '/var/www'
+  $cdir = "/etc/${sp}"
+  $conf_d = "${cdor}/conf.d"
 
+  Files {
+    owner => 'root',
+    group => 'root',
+    mode => '0644',
+  }
 
-package { 'nginx':
-ensure => present,
-}
-file { '/var/www':
-ensure => directory,
-owner => 'root',
-group => 'root',
-mode => '0775',
-}
-file { '/var/www/index.html':
-ensure => file,
-owner => 'root',
-group => 'root',
-mode => '0664',
-source => 'puppet:///modules/nginx/index.html',
-}
-file { '/etc/nginx/nginx.conf':
-ensure => file,
-owner => 'root',
-group => 'root',
-mode => '0664',
-source => 'puppet:///modules/nginx/nginx.conf',
-require => Package['nginx'],
-notify => Service['nginx'],
-}
-file { '/etc/nginx/conf.d':
-ensure => directory,
-owner => 'root',
-group => 'root',
-mode => '0775',
-}
-file { '/etc/nginx/conf.d/default.conf':
-ensure => file,
-owner => 'root',
-group => 'root',
-mode => '0664',
-source => 'puppet:///modules/nginx/default.conf',
-require => Package['nginx'],
-notify => Service['nginx'],
-}
-service { 'nginx':
-ensure => running,
-enable => true,
-}
+  package { $sp:
+  ensure => present,
+  }
+
+  file { $docr:
+  ensure => directory,
+  mode => '0775',
+  }
+
+  file { "${docr}/index.html":
+  ensure => file,
+  source => 'puppet:///modules/nginx/index.html',
+  }
+
+  file { "${cdir}/nginx.conf":
+  ensure => file,
+  source => 'puppet:///modules/nginx/nginx.conf',
+  require => Package[$sp],
+  notify => Service[$sp],
+  }
+
+  file { $conf_d:
+  ensure => directory,
+  mode => '0775',
+  }
+
+  file { "${conf_d}i/default.conf":
+  ensure => file,
+  source => 'puppet:///modules/nginx/default.conf',
+  require => Package[$sp],
+  notify => Service[$sp],
+  }
+
+  service { $sp:
+  ensure => running,
+  enable => true,
+  }
 }
