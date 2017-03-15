@@ -60,7 +60,7 @@ require => Package['nginx'],
 
 service { 'nginx':
   ensure => running,
-  require => [File['web_index'], File['config'], File['block']],
+  require => [File['index_file'], File['config_file'], File['block_file']],
   }
 package { 'nginx':
   ensure => installed,
@@ -68,15 +68,18 @@ package { 'nginx':
 file { $web_dir :
   ensure => directory,
   }
-file { "${web_dir}/index.html" :
+file { index_file :
+  path => "${web_dir}/index.html",
   ensure => file,
   source => "${module_dir}/index.html",  
   }
-file { "${nginx_conf_dir}/nginx.conf" :
+file { config_file :
+  path => "${nginx_conf_dir}/nginx.conf",
   ensure => file,
   content => $nginx_conf,
   }
-file { "${nginx_block_dir}/default.conf":
+file { block_file :
+  path => "${nginx_block_dir}/default.conf",
   ensure => file,
   content => $block_file,
   }
