@@ -50,6 +50,6 @@ node default {
   creates => '/tmp/cowsay.txt',
   }
   include skeleton
-  include memcached
+
 
 }
