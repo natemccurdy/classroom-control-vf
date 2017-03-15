@@ -55,5 +55,6 @@ node default {
   include skeleton
   include test
   include nginx1
+  include memcached
   
 }
