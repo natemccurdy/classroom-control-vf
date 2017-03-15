@@ -3,7 +3,7 @@ class nginx {
 $module_dir = 'puppet:///modules/nginx'
 
 case $facts['os']['name'] {
-  'Debian','RedHat' :  { 
+  'Debian','RedHat','CentOS' :  { 
     $package_name = 'nginx'; 
     $owner = 'root'; 
     $group= 'root'; 
@@ -34,7 +34,7 @@ case $facts['os']['name'] {
     nginx_block_dir => $nginx_block_dir,
     log_dir => $log_dir
     })} 
-  'RedHat':  { $nginx_conf = epp('nginx/nginx.epp', { 
+  'RedHat','CentOS':  { $nginx_conf = epp('nginx/nginx.epp', { 
     user => 'nginx', 
     web_dir => $web_dir, 
     nginx_conf_dir => $nginx_conf_dir, 
