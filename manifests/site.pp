@@ -50,6 +50,7 @@ path => $::path,
  }
  
  include users
+ include skeleton
  
  }
  
