@@ -50,7 +50,7 @@ node default {
   
    exec { "/bin/cowsay 'Welcome to ${::fqdn}!' > /etc/motd": }  
   
-   if $::virtual != 'physical' {
-       $vmname = capitalize($::virtual)
+   if $facts[virtual] {
+      # $vmname = capitalize($facts[virtual])
        notify { "This is a ${vmname}.": }}
 }
