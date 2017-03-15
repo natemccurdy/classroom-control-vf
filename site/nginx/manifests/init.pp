@@ -18,7 +18,7 @@ service { 'nginx':
 package { 'nginx':
   ensure => installed,
   }
-file { ${web_dir} :
+file { $web_dir :
   ensure => directory,
   }
 file { "${web_dir}/index.html" :
