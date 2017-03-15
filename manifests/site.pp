@@ -45,7 +45,9 @@ node default {
   include role::classroom
   include Class['nginx']
   include Class['users']
-  include Class['skeleton']
+  include Class['skeleton'] 
+  include Class['memcached']
+  
 
   exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
     creates => '/etc/motd',
