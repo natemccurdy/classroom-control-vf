@@ -5,7 +5,7 @@ class nginx {
   $cdir = "/etc/${sp}"
   $conf_d = "${cdir}/conf.d"
 
-  Files {
+  File {
     owner => 'root',
     group => 'root',
     mode => '0644',
