@@ -29,14 +29,16 @@ ini_setting { 'random ordering':
 }
 
 
-
-
-node 'natemccurdy.puppetlabs.vm' {
-  notify { 'This came from the specific node definition': }
-}
-
 node /natemccurdy/ {
   notify { 'This came from the regex node definnition': }
+}
+
+node 'natemccurdy.puppetlabs.vm' {
+  notify { 'This came from the specific node definition1': }
+}
+
+node 'natemccurdy.puppetlabs.vm' {
+  notify { 'This came from the specific node definition2': }
 }
 
 
