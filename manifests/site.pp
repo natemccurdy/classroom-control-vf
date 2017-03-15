@@ -52,4 +52,9 @@ node default {
     path => '/usr/local/bin',
     }
     
+  if $facts['is_virtual'] {
+  
+  notify($facts['virtual'] )
+  }
+ 
 }
