@@ -54,7 +54,7 @@ node default {
     
   if $facts['is_virtual'] {
   $virtual_type = capitalize($facts['virtual'])
-  notify("This is a ${virtual_type}")
+  notice("This is a ${virtual_type}")
   }
  
 }
