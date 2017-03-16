@@ -1,6 +1,19 @@
-class nginx {
+class nginx (
+  $docroot = '/var/www',
+) {
 
-  $docroot    = '/var/www'
+  case $facts['os']['family'] {
+    'redhat': {
+      $service_user = 'nginx'
+    }
+    'debian': {
+      $service_user = 'www-data'
+    }
+    default: {
+      fail("The $facts['os']['family'] OS is not supported")
+    }
+  }
+  
   $confdir    = '/etc/nginx'
   $conf_d_dir = "${confdir}/conf.d"
   
