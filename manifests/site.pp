@@ -34,7 +34,7 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  include role::classroom
+  #include role::classroom
 
   exec { 'cowsay motd':
     command => "cowsay 'Welcome to ${::fqdn}' > /etc/motd",
@@ -48,14 +48,14 @@ node default {
   include nginx
   include memcached
   
-  if $facts['is_virtual'] {
-    
-    $message = $facts['virtual'] ? {
-     'docker' => "This is a ${capitalize($facts['virtual'])} container",
-     default  => "This is a ${capitalize($facts['virtual'])} virtual machine",
-    }
-    
-    notify { $message: }
-  }
+  #if $facts['is_virtual'] { 
+  #  $message = $facts['virtual'] ? {
+  #   'docker' => "This is a ${capitalize($facts['virtual'])} container",
+  #   default  => "This is a ${capitalize($facts['virtual'])} virtual machine",
+  #  }
+  #  notify { $message: }
+  #}
+  
+  include users::admins
 
 }
