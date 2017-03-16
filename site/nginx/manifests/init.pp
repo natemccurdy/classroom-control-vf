@@ -1,5 +1,5 @@
-class nginx 
-(  $root ='/var/www',
+class nginx (  
+$root ='/var/www',
 ) 
 {  
 case $facts['os']['family'] {    
