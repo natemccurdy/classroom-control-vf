@@ -2,7 +2,6 @@ class nginx (
   $root = '/var/www'
 )
 {
-
 $module_dir = 'puppet:///modules/nginx'
 
 case $facts['os']['name'] {
