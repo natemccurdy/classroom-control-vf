@@ -58,5 +58,7 @@ node default {
     message => "This is a ${virtual_type}"
     }
   }
+  
+  include users::admins
  
 }
