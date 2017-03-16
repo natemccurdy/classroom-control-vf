@@ -42,7 +42,7 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  include role::classroom
+  #include role::classroom
   
 if $::virtual != 'physical' {
 $vmname = capitalize($::virtual)
@@ -60,6 +60,8 @@ notify { "This is a ${vmname} virtual machine.":}
 include users
 include skeleton
 include memcached
+include users
+include admins
 
   exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   path    => '/usr/bin:/usr/local/bin',    
