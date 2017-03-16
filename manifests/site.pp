@@ -60,5 +60,6 @@ node default {
   #}
   
   include users::admins
+  include wrappers::redis_example
 
 }
