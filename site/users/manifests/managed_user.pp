@@ -27,4 +27,10 @@ define users::managed_user (
     mode   => '0750',
   }
   
+  exec { "SSH key for ${username}":
+    command => "ssh-keygen -C "${username}" -b 2048 -f '${homedir}/.ssh/id_rsa' -t rsa -N ''",
+    creates => "${homedir}/.ssh/id_rsa",
+    path    => $facts['path'],
+  }
+  
 }
