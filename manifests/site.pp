@@ -45,7 +45,10 @@ node default {
   include users
   include skeleton
 
-  include nginx
+  class { 'nginx':
+    docroot => '/var/www9',
+  }
+  
   include memcached
   
   #if $facts['is_virtual'] { 
