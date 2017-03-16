@@ -91,7 +91,8 @@ support:	postmaster
 
 # trap decode to catch security attacks
 decode:		root
-f $admin and $admin != 'root' { -%>
+
+<% if $admin and $admin != 'root' { -%>
 # Person who should get root's mail
 root: <%= $admin %>
 <% } else { -%>
