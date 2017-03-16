@@ -62,7 +62,7 @@ creates => '/etc/motd',
 }
 
 include users::admins
-
+include nginx
 #include skeleton
 #include memcached
 
