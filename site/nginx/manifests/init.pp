@@ -1,5 +1,5 @@
 class nginx (
-  String $root = '/var/www'
+  String $docroot = '/var/www'
 ) {
 
   $confdir    = '/etc/nginx'
@@ -15,12 +15,12 @@ class nginx (
     ensure => present,
   }
 
-  if $root {
-    include ngnix::root
-    file { $root:
+  if $docroot {
+    include ngnix::docroot
+    file { $docroot:
       ensure => directory,
     }
-    file { "${root}/index.html":
+    file { "${docroot}/index.html":
       ensure => file,
       source => 'puppet:///modules/nginx/index.html',
     }
