@@ -61,6 +61,9 @@ include users
 include skeleton
 include memcached
 include users::admins
+include wrappers::epel
+include wrappers::redis
+include wrappers::limits
 
   exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   path    => '/usr/bin:/usr/local/bin',    
