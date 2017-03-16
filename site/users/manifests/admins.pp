@@ -1,8 +1,9 @@
 class users::admins {
 
-  users::user_defined { 'justin': }
-  users::user_defined { 'alice': }
-  users::user_defined { 'bob': }
+$users = ['justin', 'alice', 'bob', 'cee']
+
+  $users.each |$user| {
+    users::user_defined { $user: }
 
 }
 
