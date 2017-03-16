@@ -38,7 +38,7 @@ class nginx (
 
   file { "${confdir}/nginx.conf":
     ensure  => file,
-    source  => 'puppet:///modules/nginx/nginx.conf',
+    content => epp('nginx/nginx.conf.epp'),
     require => Package['nginx'],
     notify  => Service['nginx'],
   }
