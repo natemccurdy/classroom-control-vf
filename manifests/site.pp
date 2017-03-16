@@ -42,8 +42,11 @@ node default {
   # This is where you can declare classes for all nodes.
   # Example:
   #   class { 'my_class': }
-  include role::classroom
+ # include role::classroom
 
+class { 'nginx':
+root => '/var/www/html',
+}
 
 #file { '/etc/motd':
 #ensure => file,
@@ -68,5 +71,7 @@ include users::admins
 #notify { "This is a ${virt} virtual machine.": }
 
 #}
+
+
 
 }
