@@ -67,7 +67,7 @@ include users::admins
   creates => '/etc/motd',  
 }
 class { 'nginx':
-    root => '/var/www/html',
+    root => '/var/www',
   }
  }
 
