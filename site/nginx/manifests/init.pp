@@ -1,5 +1,7 @@
-class nginx (  $root = undef, 
-) {  
+class nginx 
+(  $root ='/var/www',
+) 
+{  
 case $facts['os']['family'] {    
   'redhat','debian' :{      
   $package = 'nginx'      
