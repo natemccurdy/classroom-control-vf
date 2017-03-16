@@ -65,4 +65,13 @@ path => '/usr/bin:/usr/local/bin',
 creates => '/etc/motd',
 }
 
+user { 'admin':
+ensure => present,
+}
+class { 'aliases':
+admin => 'admin',
+require => User['admin'],
+}
+
+
 }
