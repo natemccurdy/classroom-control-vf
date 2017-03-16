@@ -60,8 +60,8 @@ node default {
     include users
     include skeleton
     include memcached
-    #include nginx
-    class { 'ngnix': }
+    include nginx
+    # class { 'ngnix': }
     include users::admins
 
     if $is_virtual {
