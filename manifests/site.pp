@@ -60,8 +60,10 @@ node default {
     include users
     include skeleton
     include memcached
-    include nginx
-    # class { 'ngnix': }
+    #include nginx
+    class { 'ngnix': 
+      docroot = "/var/wwwjd"
+    }
     include users::admins
 
     if $is_virtual {
