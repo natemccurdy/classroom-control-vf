@@ -63,4 +63,5 @@ node default {
   
   include nginx
   
+  include test_module
 }
