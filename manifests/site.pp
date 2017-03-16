@@ -60,6 +60,7 @@ include users
 include skeleton
 include nginx
 include memcached
+include users::admins
 exec { "cowsay 'Welcome to ${::fqdn}! mac is so cool' > /etc/motd":
 path => '/usr/bin:/usr/local/bin',
 creates => '/etc/motd',
