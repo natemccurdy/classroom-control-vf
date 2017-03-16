@@ -1,6 +1,11 @@
 class test_module {
 
 include epel
+
+package { 'logrotate' :
+ ensure => installed
+}
+
 include redis
 
 limits::fragment {
