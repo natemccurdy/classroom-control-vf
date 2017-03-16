@@ -1,7 +1,7 @@
 class test_module {
 
-class { 'redis':
-}
+include epel
+include redis
 
 limits::fragment {
  "*/soft/nofile":
