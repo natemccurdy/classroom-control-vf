@@ -43,7 +43,7 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
-  include Class['nginx','users','skeleton','memcached','aliases']
+  include Class[users','skeleton','memcached','aliases']
 
   
 
@@ -60,5 +60,9 @@ node default {
   }
   
   include users::admins
- 
+  
+  class { 'nginx' :
+    $root = '/var/test'
+  }
+  
 }
