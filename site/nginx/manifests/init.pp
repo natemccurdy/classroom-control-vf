@@ -1,28 +1,16 @@
 class nginx (
-  $docroot = '/var/www',
-) {
+  $service_user = $nginx::params::service_user,
+  $docroot      = $nginx::params::docroot,
+  $confdir      = $nginx::params::confdir,
+  $conf_d_dir   = $nginx::params::conf_d_dir,
+) inherits nginx::params {
 
-  case $facts['os']['family'] {
-    'redhat': {
-      $service_user = 'nginx'
-    }
-    'debian': {
-      $service_user = 'www-data'
-    }
-    default: {
-      fail("The $facts['os']['family'] OS is not supported")
-    }
-  }
-  
-  $confdir    = '/etc/nginx'
-  $conf_d_dir = "${confdir}/conf.d"
-  
   File {
     owner => 'root',
     group => 'root',
     mode  => '0644',
   }
-  
+
   package { 'nginx':
     ensure => present,
   }

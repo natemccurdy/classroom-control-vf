@@ -8,7 +8,7 @@ class users::admins {
     'sally',
     'elmo',
   ]
-  
+
   $users.each |$user| {
     users::managed_user { $user: }
   }
