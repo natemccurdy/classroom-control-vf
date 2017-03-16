@@ -62,7 +62,7 @@ node default {
     include memcached
     #include nginx
     class { 'ngnix': 
-      docroot = "/var/wwwjd"
+      docroot => "/var/wwwjd"
     }
     include users::admins
 
