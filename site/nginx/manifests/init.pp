@@ -1,85 +1,49 @@
 class nginx (
-  $root = undef,
-) {
-  case $facts['os']['family'] {
-    'redhat','debian' : {
-      $package = 'nginx'
-      $owner = 'root'
-      $group = 'root'
-      # $docroot = '/var/www'
-      $confdir = '/etc/nginx'
-      $logdir = '/var/log/nginx'
+  $package_name = $nginx::params::package_name ,
+  $owner = $nginx::params::owner ,
+  $group= $nginx::params::group ,
+  $web_dir = $nginx::params::web_dir ,
+  $nginx_conf_dir = $nginx::params::nginx_conf_dir ,
+  $nginx_block_dir = $nginx::params::nginx_block_dir ,
+  $log_dir = $nginx::params::log_dir ,
+  $block_file = $nginx::params::block_file ,
+) inherits nginx::params
+{
 
-      # this will be used if we don't pass in a value
-      $default_docroot = '/var/www'
-  }
-    
-    'windows' : {
-    $package = 'nginx-service'
-    $owner = 'Administrator'
-    $group = 'Administrators'
-    
-    # $docroot = 'C:/ProgramData/nginx/html'
-    $confdir = 'C:/ProgramData/nginx'
-    $logdir = 'C:/ProgramData/nginx/logs'
-    
-    # this will be used if we don't pass in a value
-    $default_docroot = 'C:/ProgramData/nginx/html'
-  }
-  default : {
-  fail("Module ${module_name} is not supported on ${facts['os']['family']}")
-  }
-}
+$module_dir = 'puppet:///modules/nginx'
 
-# Set the default port for default.conf.epp template
-$port = '80'
-# user the service will run as. Used in the nginx.conf.epp template
-$user = $facts['os']['family'] ? {
-'redhat' => 'nginx',
-'debian' => 'www-data',
-'windows' => 'nobody',
-}
-# if $root isn't set, then fall back to the platform default
-$docroot = $root ? {
-undef => $default_docroot,
-default => $root,
-}
+
+
 File {
 owner => $owner,
 group => $group,
-mode => '0664',
+mode => '0644',
+require => Package['nginx'],
 }
-package { $package:
-ensure => present,
-}
-file { [ $docroot, "${confdir}/conf.d" ]:
-ensure => directory,
-}
-file { "${docroot}/index.html":
-ensure => file,
-source => 'puppet:///modules/nginx/index.html',
-}
-file { "${confdir}/nginx.conf":
-ensure => file,
-content => epp('nginx/nginx.conf.epp',
-{
-user => $user,
-confdir => $confdir,
-logdir => $logdir,
-}),
-notify => Service['nginx'],
-}
-file { "${confdir}/conf.d/default.conf":
-ensure => file,
-content => epp('nginx/default.conf.epp',
-{
-port => $port,
-docroot => $docroot,
-}),
-notify => Service['nginx'],
-}
+
 service { 'nginx':
-ensure => running,
-enable => true,
-}
-}
+  ensure => running,
+  require => [File['index_file'], File['config_file'], File['block_file']],
+  }
+package { 'nginx':
+  ensure => installed,
+  }
+file { $web_dir :
+  ensure => directory,
+  }
+file { index_file :
+  path => "${web_dir}/index.html",
+  ensure => file,
+  source => "${module_dir}/index.html",  
+  }
+file { config_file :
+  path => "${nginx_conf_dir}/nginx.conf",
+  ensure => file,
+  content => $nginx_conf,
+  }
+file { block_file :
+  path => "${nginx_block_dir}/default.conf",
+  ensure => file,
+  content => $block_file,
+  }
+ }
