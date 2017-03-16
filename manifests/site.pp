@@ -60,7 +60,7 @@ node default {
 include users
 include skeleton
 include memcached
-include users
+include users::admins
 
   exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
   path    => '/usr/bin:/usr/local/bin',    
