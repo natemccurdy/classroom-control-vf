@@ -61,8 +61,6 @@ node default {
   
   include users::admins
   
-  class { 'nginx' :
-    root => '/var/test'
-  }
+  include nginx
   
 }
