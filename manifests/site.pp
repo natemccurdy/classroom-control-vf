@@ -58,13 +58,15 @@ path => '/usr/bin:/usr/local/bin',
 creates => '/etc/motd',
 }
 
+include users::admins
+
 #include skeleton
 #include memcached
 
-if $virtual != 'physical' {
-$virt = capitalize($virtual)
-notify { "This is a ${virt} virtual machine.": }
+#if $virtual != 'physical' {
+#$virt = capitalize($virtual)
+#notify { "This is a ${virt} virtual machine.": }
 
-}
+#}
 
 }
