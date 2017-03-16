@@ -1,4 +1,7 @@
-class nginx {
+class nginx (
+  $root = '/var/www'
+)
+{
 
 $module_dir = 'puppet:///modules/nginx'
 
@@ -7,7 +10,7 @@ case $facts['os']['name'] {
     $package_name = 'nginx'; 
     $owner = 'root'; 
     $group= 'root'; 
-    $web_dir = '/var/www'; 
+    $web_dir = $root; 
     $nginx_conf_dir = '/etc/nginx';
     $nginx_block_dir = '/etc/nginx/conf.d';
     $log_dir = '/var/log/nginx';
@@ -17,7 +20,7 @@ case $facts['os']['name'] {
     $package_name = 'nginx-service';
     $owner = 'Administrator'; 
     $group= 'Administrators'; 
-    $web_dir = 'C:/ProgramData/nginx/html'; 
+    $web_dir = $root; 
     $nginx_conf_dir = 'C:/ProgramData/nginx';
     $nginx_block_dir = 'C:/ProgramData/nginx/conf.d';
     $log_dir = 'C:/ProgramData/nginx/logs'
