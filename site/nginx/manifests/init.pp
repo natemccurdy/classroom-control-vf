@@ -16,7 +16,6 @@ class nginx (
   }
 
   if $docroot {
-    include ngnix::docroot
     file { $docroot:
       ensure => directory,
     }
