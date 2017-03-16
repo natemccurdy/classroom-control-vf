@@ -43,41 +43,24 @@ node default {
   # Example:
   #   class { 'my_class': }
   include role::classroom
+  include Class['users','skeleton','memcached','aliases']
+
   
-  class { 'nginx':
-    root => '/var/www/html',
+
+  exec { "cowsay 'Welcome to ${::fqdn}!' > /etc/motd":
+    creates => '/etc/motd',
+    path => '/usr/local/bin',
+    }
+    
+  if $facts['is_virtual'] {
+  $virtual_type = capitalize($facts['virtual'])
+  notify{ virtual:
+    message => "This is a ${virtual_type}"
+    }
   }
   
-if $::virtual != 'physical' {
-$vmname = capitalize($::virtual)
-notify { "This is a ${vmname} virtual machine.": }
-}
-
-#file { '/etc/motd':
-#ensure  => file,
-#owner   => 'root',
-#group   => 'root',
-#mode    => '0644',
-#content => "Today I learned what it means to manage state using Puppet Mac is every good.\n", 
-#}
-include users
-include skeleton
-# include nginx
-include memcached
-include users::admins
-
-exec { "cowsay 'Welcome to ${::fqdn}! mac is so cool' > /etc/motd":
-path => '/usr/bin:/usr/local/bin',
-creates => '/etc/motd',
-}
-
-user { 'admin':
-ensure => present,
-}
-class { 'aliases':
-admin => 'admin',
-require => User['admin'],
-}
-
-
+  include users::admins
+  
+  include nginx
+  
 }
