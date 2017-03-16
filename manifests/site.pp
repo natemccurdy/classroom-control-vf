@@ -61,9 +61,9 @@ node default {
     include skeleton
     include memcached
     #include nginx
-    class { 'ngnix': 
-      docroot => "/var/wwwjd",
-    }
+  class { 'nginx':
+    docroot => '/var/www9',
+  }
 
     include users::admins
 

@@ -1,5 +1,5 @@
 class nginx (
-  String $docroot = '/var/www'
+  $docroot = '/var/www',
 ) {
 
   $confdir    = '/etc/nginx'
